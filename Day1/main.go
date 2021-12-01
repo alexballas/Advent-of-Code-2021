@@ -55,7 +55,7 @@ func part2() int {
 	previous := 0
 	found := 0
 
-	for counter := 0; counter < len(allNumber)-2; counter++ {
+	for counter := range allNumber[0 : len(allNumber)-2] {
 		a := allNumber[counter]
 		b := allNumber[counter+1]
 		c := allNumber[counter+2]

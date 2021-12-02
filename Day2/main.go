@@ -49,17 +49,18 @@ func part1(o []Operation) int {
 	for _, op := range o {
 		processOp_part1(op.Op, op.Value, allData)
 	}
+
 	return allData["depth"] * allData["forward"]
 }
 
 func processOp_part1(s string, i int, allData map[string]int) {
 	switch s {
 	case "forward":
-		allData[s] = allData[s] + i
+		allData[s] += i
 	case "down":
-		allData["depth"] = allData["depth"] + i
+		allData["depth"] += i
 	case "up":
-		allData["depth"] = allData["depth"] - i
+		allData["depth"] -= i
 	}
 }
 
@@ -69,17 +70,18 @@ func part2(o []Operation) int {
 	for _, op := range o {
 		processOp_part2(op.Op, op.Value, allData)
 	}
+
 	return allData["depth"] * allData["forward"]
 }
 
 func processOp_part2(s string, i int, allData map[string]int) {
 	switch s {
 	case "forward":
-		allData["depth"] = i*allData["aim"] + allData["depth"]
-		allData["forward"] = allData["forward"] + i
+		allData["depth"] += i * allData["aim"]
+		allData["forward"] += i
 	case "down":
-		allData["aim"] = allData["aim"] + i
+		allData["aim"] += i
 	case "up":
-		allData["aim"] = allData["aim"] - i
+		allData["aim"] -= i
 	}
 }
